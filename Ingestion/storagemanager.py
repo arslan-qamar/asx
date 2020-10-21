@@ -24,3 +24,4 @@ def storeData(data):
             "$set": {"Last_Updated_On": datetime.utcnow()},
             },
             True)
+        print(post_data, flush=True)
