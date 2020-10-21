@@ -1,11 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
-from mongohelper import *
 from storagemanager import *
 
 URL = 'https://www.marketindex.com.au/asx-listed-companies'
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36'
-
 
 def getSession():
     session = requests.Session()
@@ -31,4 +29,6 @@ def getListings():
     return data
 
 data = getListings()
+if not len(data) > 0:
+    raise Exception(f'Unable to fetch listings information from page: {URL}')
 storeData(data)
