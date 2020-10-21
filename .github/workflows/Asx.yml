@@ -26,4 +26,4 @@ jobs:
         echo "asx_db=${{ secrets.asx_prod_db }}" >> $GITHUB_ENV
     - name: Fetch Data from Asx Listings Page
       run: |
-        py .\Ingestion\fetcher.py
+        python .\Ingestion\fetcher.py
