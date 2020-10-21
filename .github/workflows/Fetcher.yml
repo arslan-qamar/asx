@@ -1,5 +1,6 @@
 # This workflow will install Python dependencies, run Asx Data Fetcher script to update the database
 name: Asx Listings Fetcher
+
 on:
   push:
     branches: [ main ]
