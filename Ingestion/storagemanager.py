@@ -1,10 +1,13 @@
 from mongohelper import *
 from datetime import datetime
+from pymongo import UpdateOne
 
 COLLECTION_NAME = 'listings'
 
 def storeData(data):
     collection = getMongoCollection(COLLECTION_NAME)
+
+    ops = []
     for d in data:
         post_data = {
             'Rank': d[0],
@@ -18,10 +21,13 @@ def storeData(data):
             'Year_Percentage_Change': d[8]
             }
            
-        collection.update(post_data,
+        ops.append(UpdateOne(post_data,
             {
             "$setOnInsert": {"Discovered_At": datetime.utcnow()},
             "$set": {"Last_Updated_On": datetime.utcnow()},
             },
-            True)
-        print(post_data, flush=True)
+            True))
+        print(post_data)        
+    
+    collection.bulk_write(ops)
+        
