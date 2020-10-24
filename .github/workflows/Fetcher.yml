@@ -5,10 +5,10 @@ on:
   push:
     branches: [ main ]
   schedule:
-    - cron: "0 8 * * *"
+    - cron: "0 */4 * * *"
 
 jobs:
-  build:
+  Fetch_Asx_Listings:
     runs-on: ubuntu-latest
 
     steps:
