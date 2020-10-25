@@ -13,5 +13,3 @@ def telegram_bot_sendtext(bot_message):
 
     
 
-test = telegram_bot_sendtext("Testing Telegram bot")
-print(test)
