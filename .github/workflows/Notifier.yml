@@ -1,4 +1,4 @@
-# This workflow will install Python dependencies, run Asx New Listings Notifier script to notify me when a new listing is found today
+# This workflow will install Python dependencies, run Asx New Listings Notifier script to notify me when a new listing is found today.
 name: Asx Listings Notifier
 
 on:
