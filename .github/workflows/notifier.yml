@@ -1,0 +1,31 @@
+# This workflow will install Python dependencies, run Asx New Listings Notifier script to notify me when a new listing is found today
+name: Asx Listings Notifier
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: "0 */5 * * *"
+
+jobs:
+  Notify_Asx_Listings:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8   
+    - name: Setup DB Connection Environment Variable
+      run: |
+        echo "asx_db=${{ secrets.asx_prod_db }}" >> $GITHUB_ENV
+    - name: Setup DB Connection Environment Variable
+      run: |
+        echo "bot_token=${{ secrets.bot_token }}" >> $GITHUB_ENV
+    - name: Setup Telegram Bot Token Environment Variable
+      run: |
+        echo "bot_chatID=${{ secrets.bot_chatID }}" >> $GITHUB_ENV
+    - name: Notify Telegram Chat ID
+      run: |
+        python3 start_notifier.py
