@@ -24,12 +24,12 @@ jobs:
     - name: Setup DB Connection Environment Variable
       run: |
         echo "asx_db=${{ secrets.asx_prod_db }}" >> $GITHUB_ENV
-    - name: Setup DB Connection Environment Variable
-      run: |
-        echo "bot_token=${{ secrets.bot_token }}" >> $GITHUB_ENV
     - name: Setup Telegram Bot Token Environment Variable
       run: |
+        echo "bot_token=${{ secrets.bot_token }}" >> $GITHUB_ENV
+    - name: Setup Telegram Bot Chat ID Environment Variable
+      run: |
         echo "bot_chatid=${{ secrets.bot_chatID }}" >> $GITHUB_ENV
-    - name: Notify Telegram Chat ID
+    - name: Notify Telegram For New Listings
       run: |
         python3 start_notifier.py
