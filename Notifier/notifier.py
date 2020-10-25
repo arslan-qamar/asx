@@ -1,16 +1,18 @@
 import requests
 from mongohelper import *
 from os import environ
+import telegram
 
 def telegram_bot_sendtext(bot_message):
     
     bot_token = environ.get('bot_token')
-    bot_chatID = environ.get('bot_chatid')
-    send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
+    bot_chatid = environ.get('bot_chatid')
 
-    response = requests.get(send_text)
+    bot = telegram.Bot(token=bot_token)
 
-    return response.json()
+    response = bot.send_message(chat_id=bot_chatid, text=bot_message, parse_mode=telegram.ParseMode.HTML)
+
+    return response
 
     
 

@@ -37,3 +37,8 @@ def storeData(data):
     
     collection.bulk_write(ops)
         
+def getNewListings(startDate):
+    collection = getMongoCollection(COLLECTION_NAME)
+
+    results = collection.find({'Discovered_At' : {'$gte' : startDate}})
+    return results
