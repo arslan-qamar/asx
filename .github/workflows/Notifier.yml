@@ -17,6 +17,10 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.8   
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip       
+        if [ -f ./Notifier/requirements.txt ]; then pip install -r ./Notifier/requirements.txt; fi 
     - name: Setup DB Connection Environment Variable
       run: |
         echo "asx_db=${{ secrets.asx_prod_db }}" >> $GITHUB_ENV
