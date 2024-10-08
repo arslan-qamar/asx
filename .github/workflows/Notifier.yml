@@ -33,3 +33,4 @@ jobs:
     - name: Notify Telegram For New Listings
       run: |
         python3 start_notifier.py
+

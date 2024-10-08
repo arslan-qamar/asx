@@ -42,3 +42,4 @@ def getNewListings(startDate):
 
     results = collection.find({'Discovered_At' : {'$gte' : startDate}})
     return results
+
