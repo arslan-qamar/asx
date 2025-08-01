@@ -1,5 +1,8 @@
 # ASX Listings Web Crawler and Notifier
 
+[![Test Suite](https://github.com/arslan-qamar/asx/actions/workflows/tests.yml/badge.svg)](https://github.com/arslan-qamar/asx/actions/workflows/tests.yml)
+[![codecov](https://codecov.io/gh/arslan-qamar/asx/branch/main/graph/badge.svg)](https://codecov.io/gh/arslan-qamar/asx)
+
 This project is a web crawler that scrapes ASX-listed company data from the [Market Index](https://www.marketindex.com.au/asx-listed-companies) website. It periodically fetches new listings and stores them in a database. If new listings are found, a notification is sent to a Telegram bot chat.
 
 ## Features
@@ -76,6 +79,21 @@ The test suite covers:
 
 All tests use mocking to avoid external dependencies during testing.
 
+## Continuous Integration
+
+This project uses GitHub Actions for automated testing and quality assurance:
+
+### Test Pipeline
+- **Triggers**: Pull requests and pushes to main branch
+- **Python versions**: 3.8, 3.9, 3.10, 3.11
+- **Test execution**: Both custom runner and unittest discovery
+- **Coverage reporting**: Automated coverage reports via Codecov
+
+### Workflow Files
+- `.github/workflows/tests.yml` - Test suite execution and coverage reporting
+- `.github/workflows/Fetcher.yml` - Production data fetching (scheduled)
+- `.github/workflows/Notifier.yml` - Production notifications (scheduled)
+
 ## Project Structure
 ```plaintext
 .
@@ -94,8 +112,9 @@ All tests use mocking to avoid external dependencies during testing.
 │   ├── test_notifier.py  # Tests for notifier module
 │   └── test_storagemanager.py # Tests for storage manager
 ├── .github/workflows/
-│   ├── fetcher.yml       # GitHub Action for fetching listings
-│   ├── notifier.yml      # GitHub Action for notifying Telegram
+│   ├── Fetcher.yml       # GitHub Action for fetching listings
+│   ├── Notifier.yml      # GitHub Action for notifying Telegram
+│   └── tests.yml         # GitHub Action for running tests
 ├── start_fetcher.py      # Entry point for fetcher
 ├── start_notifier.py     # Entry point for notifier
 ├── mongohelper.py        # Helper for MongoDB operations
