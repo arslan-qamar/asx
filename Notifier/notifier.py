@@ -10,7 +10,7 @@ def telegram_bot_sendtext(bot_message):
 
     bot = telegram.Bot(token=bot_token)
 
-    response = bot.send_message(chat_id=bot_chatid, text=bot_message, parse_mode=telegram.ParseMode.HTML)
+    response = bot.send_message(chat_id=bot_chatid, text=bot_message, parse_mode=telegram.constants.ParseMode.HTML)
 
     return response
 
