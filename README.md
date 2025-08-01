@@ -23,8 +23,8 @@ This project is a web crawler that scrapes ASX-listed company data from the [Mar
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/asx-listings-bot.git
-   cd asx-listings-bot
+   git clone https://github.com/arslan-qamar/asx.git
+   cd asx
    ```
 2. Install dependencies:
    ```bash
@@ -46,21 +46,24 @@ This project is a web crawler that scrapes ASX-listed company data from the [Mar
    ```
 
 ## Project Structure
-```
+```plaintext
 .
 ├── Ingestion/
-│   ├── start_fetcher.py  # Fetches ASX listings and updates DB
+│   ├── fetcher.py        # Fetches ASX listings and updates DB
 │   ├── requirements.txt  # Dependencies for ingestion
 ├── Notifier/
-│   ├── start_notifier.py  # Checks for new listings and notifies Telegram
+│   ├── notifier.py       # Checks for new listings and notifies Telegram
 │   ├── requirements.txt  # Dependencies for notifier
 ├── storage/
-│   ├── storagemanager.py  # Handles MongoDB interactions
+│   ├── storagemanager.py # Handles MongoDB interactions
 ├── .github/workflows/
-│   ├── fetcher.yml  # GitHub Action for fetching listings
-│   ├── notifier.yml  # GitHub Action for notifying Telegram
-├── README.md  # Project documentation
-└── requirements.txt
+│   ├── fetcher.yml       # GitHub Action for fetching listings
+│   ├── notifier.yml      # GitHub Action for notifying Telegram
+├── start_fetcher.py      # Entry point for fetcher
+├── start_notifier.py     # Entry point for notifier
+├── mongohelper.py        # Helper for MongoDB operations
+├── README.md             # Project documentation
+└── requirements.txt      # Main dependencies
 ```
 
 ## GitHub Actions Workflow
@@ -86,13 +89,11 @@ on:
 ```
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
 ## Author
-Arslan Qamar - [Asx Listings Web Crawler and Notifier](https://github.com/arslan-qamar/Asx)
+Arslan Qamar - [ASX Listings Web Crawler and Notifier](https://github.com/arslan-qamar/asx)
 
 ---
 
-Feel free to modify and expand the project as needed!
-
-
+Feel free to modify and expand the project as needed! If you have any questions or suggestions, please open an issue on GitHub.
