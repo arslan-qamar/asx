@@ -1,0 +1,6 @@
+# Testing dependencies
+requests
+beautifulsoup4
+pymongo
+dnspython
+python-telegram-bot

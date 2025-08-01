@@ -45,6 +45,37 @@ This project is a web crawler that scrapes ASX-listed company data from the [Mar
    python start_notifier.py
    ```
 
+## Testing
+
+This project includes comprehensive unit tests to ensure code quality and reliability.
+
+### Running Tests
+
+1. Install test dependencies:
+   ```bash
+   pip install -r requirements-test.txt
+   ```
+
+2. Run all tests using the test runner:
+   ```bash
+   python run_tests.py
+   ```
+
+3. Or run tests using Python's unittest module:
+   ```bash
+   python -m unittest discover tests -v
+   ```
+
+### Test Coverage
+
+The test suite covers:
+- **Fetcher module**: Web scraping functionality, session management, and HTML parsing
+- **MongoDB helper**: Database connection and collection management
+- **Storage manager**: Data storage operations and querying
+- **Notifier module**: Telegram bot messaging functionality
+
+All tests use mocking to avoid external dependencies during testing.
+
 ## Project Structure
 ```plaintext
 .
@@ -56,12 +87,20 @@ This project is a web crawler that scrapes ASX-listed company data from the [Mar
 │   ├── requirements.txt  # Dependencies for notifier
 ├── storage/
 │   ├── storagemanager.py # Handles MongoDB interactions
+├── tests/
+│   ├── __init__.py       # Test package initialization
+│   ├── test_fetcher.py   # Tests for fetcher module
+│   ├── test_mongohelper.py # Tests for MongoDB helper
+│   ├── test_notifier.py  # Tests for notifier module
+│   └── test_storagemanager.py # Tests for storage manager
 ├── .github/workflows/
 │   ├── fetcher.yml       # GitHub Action for fetching listings
 │   ├── notifier.yml      # GitHub Action for notifying Telegram
 ├── start_fetcher.py      # Entry point for fetcher
 ├── start_notifier.py     # Entry point for notifier
 ├── mongohelper.py        # Helper for MongoDB operations
+├── run_tests.py          # Test runner script
+├── requirements-test.txt # Testing dependencies
 ├── README.md             # Project documentation
 └── requirements.txt      # Main dependencies
 ```
